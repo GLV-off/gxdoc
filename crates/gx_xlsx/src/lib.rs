@@ -1,26 +1,13 @@
-enum CellValue {
-    Undefined,
-    Text, 
-    Number,
-}
+mod cell_value;
+mod cell;
+mod cells;
+mod matrix;
+mod sheet;
 
-struct Cell {
-    value: CellValue
-}
+mod document;
 
-struct Matrix<T> {
-    items: Vec<T>
-}
+pub use sheet::Sheet;
+pub use document::{ Document, SaveError, SaveResult, SaveStatus };
 
-struct Cells(Matrix<Cell>);
-
-struct Sheet {
-    short_name: String,
-    cells: Cells,
-}
-
-struct Sheets(Vec<Sheet>);
-
-struct Document {
-    sheets: Sheets
-}
+#[cfg(test)]
+mod test;
