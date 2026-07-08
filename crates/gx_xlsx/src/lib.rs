@@ -1,14 +1,26 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
+enum CellValue {
+    Undefined,
+    Text, 
+    Number,
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+struct Cell {
+    value: CellValue
+}
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+struct Matrix<T> {
+    items: Vec<T>
+}
+
+struct Cells(Matrix<Cell>);
+
+struct Sheet {
+    short_name: String,
+    cells: Cells,
+}
+
+struct Sheets(Vec<Sheet>);
+
+struct Document {
+    sheets: Sheets
 }
